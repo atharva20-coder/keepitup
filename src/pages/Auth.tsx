@@ -60,16 +60,16 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted p-4">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center mb-8">
           <div className="flex items-center gap-2">
             <Briefcase className="h-8 w-8 text-primary" />
-            <h1 className="text-2xl font-bold">Job Tracker</h1>
+            <h1 className="text-2xl font-bold">Keepitup</h1>
           </div>
         </div>
 
-        <Card className="shadow-lg border-0 bg-card/50 backdrop-blur">
+        <Card className="shadow-lg">
           <CardHeader className="text-center">
             <CardTitle>Welcome</CardTitle>
             <CardDescription>
