@@ -14,7 +14,232 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      application_timeline: {
+        Row: {
+          application_id: string
+          created_at: string
+          date: string
+          id: string
+          notes: string | null
+          status: string
+        }
+        Insert: {
+          application_id: string
+          created_at?: string
+          date?: string
+          id?: string
+          notes?: string | null
+          status: string
+        }
+        Update: {
+          application_id?: string
+          created_at?: string
+          date?: string
+          id?: string
+          notes?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "application_timeline_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "job_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      companies: {
+        Row: {
+          created_at: string
+          id: string
+          industry: string | null
+          location: string | null
+          name: string
+          notes: string | null
+          updated_at: string
+          user_id: string
+          website: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          industry?: string | null
+          location?: string | null
+          name: string
+          notes?: string | null
+          updated_at?: string
+          user_id: string
+          website?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          industry?: string | null
+          location?: string | null
+          name?: string
+          notes?: string | null
+          updated_at?: string
+          user_id?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      hr_contacts: {
+        Row: {
+          company_id: string | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          notes: string | null
+          phone: string | null
+          position: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_id?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          phone?: string | null
+          position?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_id?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          phone?: string | null
+          position?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hr_contacts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      job_applications: {
+        Row: {
+          application_date: string
+          company_id: string | null
+          cover_letter_url: string | null
+          created_at: string
+          follow_up_date: string | null
+          hr_contact_id: string | null
+          id: string
+          job_description: string | null
+          job_description_url: string | null
+          location: string | null
+          notes: string | null
+          position_title: string
+          resume_url: string | null
+          salary_range: string | null
+          status: string
+          updated_at: string
+          user_id: string
+          work_type: string | null
+        }
+        Insert: {
+          application_date?: string
+          company_id?: string | null
+          cover_letter_url?: string | null
+          created_at?: string
+          follow_up_date?: string | null
+          hr_contact_id?: string | null
+          id?: string
+          job_description?: string | null
+          job_description_url?: string | null
+          location?: string | null
+          notes?: string | null
+          position_title: string
+          resume_url?: string | null
+          salary_range?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+          work_type?: string | null
+        }
+        Update: {
+          application_date?: string
+          company_id?: string | null
+          cover_letter_url?: string | null
+          created_at?: string
+          follow_up_date?: string | null
+          hr_contact_id?: string | null
+          id?: string
+          job_description?: string | null
+          job_description_url?: string | null
+          location?: string | null
+          notes?: string | null
+          position_title?: string
+          resume_url?: string | null
+          salary_range?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+          work_type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_applications_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "job_applications_hr_contact_id_fkey"
+            columns: ["hr_contact_id"]
+            isOneToOne: false
+            referencedRelation: "hr_contacts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
