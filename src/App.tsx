@@ -7,6 +7,7 @@ import { AuthProvider, useAuth } from "@/hooks/useAuth";
 import Dashboard from "./pages/Dashboard";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import { SidebarProvider } from "./components/ui/sidebar";
 
 const queryClient = new QueryClient();
 
@@ -46,21 +47,23 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route 
-              path="/" 
+            <Route
+              path="/"
               element={
                 <ProtectedRoute>
-                  <Dashboard />
+                  <SidebarProvider>
+                    <Dashboard />
+                  </SidebarProvider>
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/auth" 
+            <Route
+              path="/auth"
               element={
                 <PublicRoute>
                   <Auth />
                 </PublicRoute>
-              } 
+              }
             />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
